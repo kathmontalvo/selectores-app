@@ -15,19 +15,31 @@
   </div>
 
   <!-- countries -->
-  <div class="row mb-3">
+  <div class="row mb-3" *ngIf="countriesByRegion.length > 0">
     <div class="col">
       <label class="form-label"> Continent: </label>
       <select formControlName="country" class="form-control">
         <option value="">-- Select country --</option>
-        <!-- <option *ngFor="let region of regions" [value]="region"> {{region}} </option> -->
+        <option *ngFor="let country of countriesByRegion" [value]="country.cca3"> {{country.name}} </option>
       </select>
     </div>
   </div>
+
+    <!-- borders -->
+    <div class="row mb-3" *ngIf="borders.length > 0">
+      <div class="col">
+        <label class="form-label"> Borders: </label>
+        <select formControlName="border" class="form-control">
+          <option value="">-- Select border --</option>
+          <option *ngFor="let country of borders" [value]="country.cca3"> {{country.name}} </option>
+        </select>
+      </div>
+    </div>
 
 </form>
 
 <h3>Form</h3>
 <code>
-  {{ myForm.value | json }}
+  {{ myForm.value | json }} <br>
+  isValid: {{ myForm.valid | json }}
 </code>
